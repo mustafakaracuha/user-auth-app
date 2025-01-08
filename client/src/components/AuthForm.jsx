@@ -16,10 +16,12 @@ const AuthForm = ({ isLogin, onSubmit, error, success, loading }) => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
 
+    const [warning, setWarning] = useState("");
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!isLogin && password !== confirmPassword) {
-            alert("Passwords do not match");
+            setWarning("Passwords do not match");
             return;
         }
         onSubmit({ name, username, email, password });
@@ -88,6 +90,7 @@ const AuthForm = ({ isLogin, onSubmit, error, success, loading }) => {
                     </div>
                     {error && <div className="text-red-500 bg-red-50 py-2 rounded-md text-sm text-center">{error}</div>}
                     {success && <div className="text-green-500 bg-green-50 py-2 px-2 rounded-md text-sm text-center">{success}</div>}
+                    {warning && <div className="text-yellow-600 bg-yellow-50 py-2 px-2 rounded-md text-sm text-center">{warning}</div>}
                     {isLogin ? (
                         <div className="text-center">
                             <span className="text-gray-700">Don't have an account? </span>
