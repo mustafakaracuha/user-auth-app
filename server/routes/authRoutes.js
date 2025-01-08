@@ -14,6 +14,6 @@ router.post("/login", authUser);
 router.get("/user-count", getUserCount);
 
 // Tüm kullanıcıları çeken rota
-router.get("/users", getAllUsers);
+router.get("/users", protect, getAllUsers);
 
 module.exports = router;
