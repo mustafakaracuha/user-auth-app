@@ -100,12 +100,5 @@ A personalized user profile page that displays user details,
 
 ---
 
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
-
----
-
 Happy coding! If you have any questions or suggestions, feel free to open an issue. 🎉🤞🏼
 
