@@ -9,7 +9,7 @@ const UserList = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const { data } = await axios.get("/api/auth/users");
+                const { data } = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/auth/users`);
                 setUsers(data);
             } catch (error) {
                 console.error("Error fetching users:", error);
