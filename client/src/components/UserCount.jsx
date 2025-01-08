@@ -4,11 +4,12 @@ import { FaUsers } from "react-icons/fa";
 
 const UserCount = () => {
     const [userCount, setUserCount] = useState(0);
+    const base_url = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
         const fetchUserCount = async () => {
             try {
-                const { data } = await axios.get("/api/auth/user-count");
+                const { data } = await axios.get(`${base_url}/api/auth/user-count`);
                 setUserCount(data.userCount);
             } catch (error) {
                 console.error("Error fetching user count:", error);
