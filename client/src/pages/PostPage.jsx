@@ -95,12 +95,11 @@ const PostsPage = () => {
                             <CgSpinner size={30} className="animate-spin text-indigo-600" />
                         </div>
                     )}
-                    {!loading && Array.isArray(posts) && posts.length === 0 ?  (
+                    {!loading && posts.length === 0 ?  (
                         <div className="w-full h-full flex items-start justify-center">
                             <p className="text-md text-gray-400">Share your post</p>
                         </div>
                     ) : (
-                        Array.isArray(posts) &&
                         posts.map((post, index) => (
                             <motion.div
                                 initial={{ opacity: 0, y: -10 }}
