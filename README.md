@@ -100,6 +100,17 @@ A personalized user profile page that displays user details,
 
 ---
 
+### **Login Page:**
+A secure login page with animations for a smooth user experience.
+
+Below are previews of the **Registration** and **Login** pages:
+
+| **Registration Page**                                  | **Login Page**                                     |
+|--------------------------------------------------------|---------------------------------------------------|
+| ![Registration Preview](https://via.placeholder.com/300x200.png?text=Registration+Page) | ![Login Preview](https://via.placeholder.com/300x200.png?text=Login+Page) |
+
+---
+
 ## Demo Link
 You can view the application live by visiting the Live Demo.
 👉🏼 https://user-autho-app.vercel.app/
