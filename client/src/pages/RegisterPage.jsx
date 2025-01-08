@@ -8,11 +8,9 @@ const RegisterPage = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
-    const base_url = import.meta.env.VITE_BASE_URL;
-
     const handleRegister = async (data) => {
         try {
-            const response = await axios.post(`/api/auth/register`, data);
+            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/auth/register`, data);
             console.log("Register data:", response.data);
             setSuccess(response.data.message);
             setTimeout(() => {
