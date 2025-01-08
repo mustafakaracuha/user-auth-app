@@ -100,10 +100,7 @@ A personalized user profile page that displays user details,
 
 ---
 
-### **Login Page:**
-A secure login page with animations for a smooth user experience.
-
-Below are previews of the **Registration** and **Login** pages:
+## Screenshots
 
 | **Registration Page**                                  | **Login Page**                                     |
 |--------------------------------------------------------|---------------------------------------------------|
