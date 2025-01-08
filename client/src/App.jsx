@@ -5,6 +5,7 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 import PrivateRoute from "./utils/PrivateRoute";
+import PostsPage from "./pages/PostPage";
 
 const App = () => {
     return (
@@ -27,6 +28,7 @@ const App = () => {
                     }
                 />
                 <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/posts" element={<PostsPage />} />
             </Routes>
         </Router>
     );
