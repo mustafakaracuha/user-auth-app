@@ -61,7 +61,7 @@ client/
     ├── Index.jsx      # Main React application entry point (JSX format)
     ├── index.js       # ReactDOM rendering
 
----
+```
 
 ## API Endpoints
 
