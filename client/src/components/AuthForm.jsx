@@ -33,7 +33,7 @@ const AuthForm = ({ isLogin, onSubmit, error, success, loading }) => {
 
     return (
         <div className="flex items-center justify-center min-h-screen max-sm:bg-white bg-gray-100">
-            <div className="w-full max-w-md p-8 max-sm:p-0 space-y-8 bg-white rounded-lg max-sm:shadow-none shadow-lg shadow-gray-200">
+            <div className="w-full max-sm:max-w-sm max-w-md p-8 max-sm:p-8 space-y-8 bg-white rounded-lg max-sm:shadow-none shadow-lg shadow-gray-200">
                 <h2 className="text-2xl font-bold text-center text-gray-900">{isLogin ? "Login" : "Register"}</h2>
                 <form onSubmit={handleSubmit} className="mt-8 space-y-6">
                     <div className="rounded-md shadow-sm -space-y-px">
