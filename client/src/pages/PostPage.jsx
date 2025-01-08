@@ -60,7 +60,7 @@ const PostsPage = () => {
         <div className="flex items-center justify-center min-h-screen max-sm:bg-white bg-gray-100">
             <div
                 className={
-                    posts.length === 0
+                    posts?.length === 0
                         ? "w-full transition-all h-[25rem] max-w-xl p-8 space-y-8 bg-white rounded-lg max-sm:shadow-none shadow-lg"
                         : "w-full transition-all h-[40rem] max-w-xl p-8 space-y-8 bg-white rounded-lg max-sm:shadow-none shadow-lg"
                 }
