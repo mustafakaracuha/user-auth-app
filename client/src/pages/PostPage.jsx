@@ -86,17 +86,17 @@ const PostsPage = () => {
                 </form>
                 <div className="mt-8 h-[20rem] overflow-y-auto">
                     {loading && (
-                        <div className={posts?.length === 0 ? "w-full flex items-start justify-center" : "w-full h-full flex items-center justify-center"}>
+                        <div className={posts.length === 0 ? "w-full flex items-start justify-center" : "w-full h-full flex items-center justify-center"}>
                             <CgSpinner size={30} className="animate-spin text-indigo-600" />
                         </div>
                     )}
-                    {!loading && posts?.length === 0 ? (
+                    {!loading && posts && posts.length === 0 ? (
                         <div className="w-full h-full flex items-start justify-center">
                             <p className="text-md text-gray-400">Share your post</p>
                         </div>
                     ) : (
-                        posts.length > 0 &&
-                        posts?.map((post, index) => (
+                        posts &&
+                        posts.map((post, index) => (
                             <motion.div
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
