@@ -9,7 +9,6 @@ const LoginPage = () => {
     const [success, setSuccess] = useState("");
     const [loading, setLoading] = useState(false);
 
-
     const handleLogin = async (data) => {
         setLoading(true);
         try {
@@ -26,7 +25,7 @@ const LoginPage = () => {
         }
     };
 
-    return <AuthForm isLogin={true} onSubmit={handleLogin} error={error} success={success} loading={loading}/>;
+    return <AuthForm isLogin={true} onSubmit={handleLogin} error={error} success={success} loading={loading} />;
 };
 
 export default LoginPage;

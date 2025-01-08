@@ -25,7 +25,7 @@ const RegisterPage = () => {
         }
     };
 
-    return <AuthForm isLogin={false} onSubmit={handleRegister} error={error} success={success} loading={loading}/>;
+    return <AuthForm isLogin={false} onSubmit={handleRegister} error={error} success={success} loading={loading} />;
 };
 
 export default RegisterPage;

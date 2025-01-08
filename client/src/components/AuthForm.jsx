@@ -78,8 +78,12 @@ const AuthForm = ({ isLogin, onSubmit, error, success, loading }) => {
                             type="submit"
                             className="group relative flex w-full justify-center py-3 px-4 bg-gradient-to-r from-[#0074b4] to-[#00b34c] text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                         >
-                             {!loading && (isLogin ? "Login" : "Register")}
-                            {loading && (<div className="w-full h-full flex items-center justify-center"><CgSpinner size={22} className="animate-spin" /></div>)}
+                            {!loading && (isLogin ? "Login" : "Register")}
+                            {loading && (
+                                <div className="w-full h-full flex items-center justify-center">
+                                    <CgSpinner size={22} className="animate-spin" />
+                                </div>
+                            )}
                         </button>
                     </div>
                     {error && <div className="text-red-500 bg-red-50 py-2 rounded-md text-sm text-center">{error}</div>}
@@ -94,7 +98,7 @@ const AuthForm = ({ isLogin, onSubmit, error, success, loading }) => {
                     ) : (
                         <div className="text-center">
                             <span className="text-gray-700">Already have an account? </span>
-                            <Link to="/"  className="font-medium hover:text-green-700 cursor-pointer text-gray-800">
+                            <Link to="/" className="font-medium hover:text-green-700 cursor-pointer text-gray-800">
                                 Login
                             </Link>
                         </div>

@@ -30,7 +30,12 @@ const UserList = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.4, delay: index * 0.1 }}
                     >
-                        <Avatar size={56} name={user.name} variant="beam" colors={["#5b1d99", "#0074b4", "#00b34c", "#F29F58", "#81BFDA", "#ffd41f", "#fc6e3d", "#FFEB00", "#EFB6C8", "#E82561","#997C70","#FF8383"]} />
+                        <Avatar
+                            size={56}
+                            name={user.name}
+                            variant="beam"
+                            colors={["#5b1d99", "#0074b4", "#00b34c", "#F29F58", "#81BFDA", "#ffd41f", "#fc6e3d", "#FFEB00", "#EFB6C8", "#E82561", "#997C70", "#FF8383"]}
+                        />
                         <p className="text-center text-[11px] font-medium text-gray-500">{user.name}</p>
                     </motion.div>
                 ))}

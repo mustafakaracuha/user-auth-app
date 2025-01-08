@@ -19,7 +19,7 @@ const PasswordInput = ({ id, name, value, onChange, placeholder, showPassword, t
                 placeholder={placeholder}
             />
             <button type="button" onClick={toggleShowPassword} className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-600">
-                {showPassword ? <FaEyeSlash className="text-gray-400"/> : <FaEye className="text-gray-400"/>}
+                {showPassword ? <FaEyeSlash className="text-gray-400" /> : <FaEye className="text-gray-400" />}
             </button>
         </div>
     );
