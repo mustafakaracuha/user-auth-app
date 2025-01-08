@@ -78,7 +78,7 @@ const AuthForm = ({ isLogin, onSubmit, error, success, loading }) => {
                     <div>
                         <button
                             type="submit"
-                            className="group relative flex w-full justify-center py-3 px-4 bg-gradient-to-r from-[#0074b4] to-[#00b34c] text-md font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                            className="group relative flex w-full justify-center py-3 px-4 bg-gradient-to-r from-[#0074b4] to-[#00b34c] text-md font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                         >
                             {!loading && (isLogin ? "Login" : "Register")}
                             {loading && (
