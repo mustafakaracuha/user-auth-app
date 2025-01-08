@@ -101,7 +101,7 @@ const AuthForm = ({ isLogin, onSubmit, error, success, loading }) => {
                     ) : (
                         <div className="text-center">
                             <span className="text-gray-700">Already have an account? </span>
-                            <Link to="/" className="font-medium hover:text-green-700 cursor-pointer text-gray-800">
+                            <Link to="/login" className="font-medium hover:text-green-700 cursor-pointer text-gray-800">
                                 Login
                             </Link>
                         </div>
