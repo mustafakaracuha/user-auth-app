@@ -107,7 +107,7 @@ Below are previews of the **Registration** and **Login** pages:
 
 | **Registration Page**                                  | **Login Page**                                     |
 |--------------------------------------------------------|---------------------------------------------------|
-| ![Registration Preview](https://via.placeholder.com/300x200.png?text=Registration+Page) | ![Login Preview](https://via.placeholder.com/300x200.png?text=Login+Page) |
+| ![Registration Preview](https://github.com/mustafakaracuha/user-auth-app/blob/master/client/src/assets/screenshots/register.png) | ![Login Preview](https://github.com/mustafakaracuha/user-auth-app/blob/master/client/src/assets/screenshots/login.png) |
 
 ---
 
