@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import axios from "axios";
 import Avatar from "boring-avatars";
 import { jwtDecode } from "jwt-decode";
-import { Link } from "react-router-dom";
+import moment from "moment";
+import { motion } from "framer-motion";
+
 import { CgSpinner } from "react-icons/cg";
 
 const PostsPage = () => {
     const [content, setContent] = useState("");
     const [posts, setPosts] = useState([]);
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         fetchPosts();
@@ -20,11 +25,14 @@ const PostsPage = () => {
     }, []);
 
     const fetchPosts = async () => {
+        setLoading(true);
         try {
             const response = await axios.get("/api/posts");
             setPosts(response.data);
+            setLoading(false);
         } catch (error) {
             console.error("Error fetching posts:", error);
+            setLoading(false);
         }
     };
 
@@ -49,8 +57,14 @@ const PostsPage = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="w-full max-w-lg h-[40rem] p-8 space-y-8 bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="flex items-center justify-center min-h-screen max-sm:bg-white bg-gray-100">
+            <div
+                className={
+                    posts.length === 0
+                        ? "w-full transition-all h-[25rem] max-w-xl p-8 space-y-8 bg-white rounded-lg max-sm:shadow-none shadow-lg"
+                        : "w-full transition-all h-[40rem] max-w-xl p-8 space-y-8 bg-white rounded-lg max-sm:shadow-none shadow-lg"
+                }
+            >
                 <div className="flex items-center justify-between">
                     <h1 className="text-2xl font-bold">Posts</h1>
                     <Link to="/profile" className="text-md font-bold">
@@ -61,23 +75,34 @@ const PostsPage = () => {
                     <div className="flex items-center gap-4">
                         <textarea
                             className="w-full h-24 p-2 border border-gray-300 rounded outline-none focus:border-indigo-500"
-                            placeholder="Neler düşündüğünüzü buraya yazın..."
+                            placeholder="What do you think?"
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
                         ></textarea>
                     </div>
-                    <button type="submit" disabled={!content} className="self-end disabled:opacity-50 bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600">
-                        Paylaş
+                    <button type="submit" disabled={!content} className="self-end max-sm:w-full mt-2 disabled:opacity-50 bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600">
+                        Send
                     </button>
                 </form>
                 <div className="mt-8 h-[20rem] overflow-y-auto">
-                    {posts.length === 0 ? (
-                        <div className="w-full h-full flex items-center justify-center">
-                            <CgSpinner size={30} className="text-indigo-600 animate-spin" />
+                    {loading && (
+                        <div className={posts.length === 0 ? "w-full flex items-start justify-center" : "w-full h-full flex items-center justify-center"}>
+                            <CgSpinner size={30} className="animate-spin text-indigo-600" />
+                        </div>
+                    )}
+                    {!loading && posts.length === 0 ? (
+                        <div className="w-full h-full flex items-start justify-center">
+                            <p className="text-md text-gray-400">Share your post</p>
                         </div>
                     ) : (
-                        posts.map((post) => (
-                            <div key={post._id} className="mb-4 p-4 border border-gray-300 rounded-md flex items-start space-x-4">
+                        posts.map((post, index) => (
+                            <motion.div
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4, delay: index * 0.1 }}
+                                key={post._id}
+                                className="mb-4 p-4 border border-gray-300 rounded-md flex items-start space-x-4"
+                            >
                                 <Avatar
                                     size={40}
                                     name={post.username}
@@ -86,14 +111,15 @@ const PostsPage = () => {
                                 />
                                 <div className="w-full">
                                     <div className="flex items-center justify-between">
-                                        <p className="text-gray-500 font-semibold text-md">
-                                            {post.user.name} {post.user.username}
-                                        </p>
-                                        <p className="text-gray-300 text-sm">{post.createdAt}</p>
+                                        <div className="flex items-center gap-2">
+                                            <p className="text-gray-500 font-semibold text-md">{post.user.name}</p>
+                                            <p className="text-gray-300 font-semibold text-sm max-sm:hidden">@{post.user.username}</p>
+                                        </div>
+                                        <p className="text-gray-300 text-sm">{moment(post.createdAt).fromNow()}</p>
                                     </div>
                                     <p className="text-gray-700 mt-3">{post.content}</p>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))
                     )}
                 </div>

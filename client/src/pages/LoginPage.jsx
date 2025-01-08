@@ -17,7 +17,7 @@ const LoginPage = () => {
             setSuccess(response.data.message);
             setTimeout(() => {
                 setLoading(false);
-                navigate("/profile");
+                navigate("/posts");
             }, 1000);
         } catch (error) {
             setError(error.response?.data?.message || "Error logging in user");

@@ -57,12 +57,12 @@ const ProfilePage = () => {
                     <p className="text-md text-gray-700">{user.email}</p>
                 </div>
                 <div className="flex items-center justify-center gap-4">
-                    {/* <Link
+                    <Link
                         to="/posts"
                         className="w-1/2 flex items-center cursor-pointer justify-center font-medium text-md py-3 px-4 bg-gradient-to-r from-[#ffd41f] to-[#fc6e3d] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fc6e3d]"
                     >
                         Posts
-                    </Link> */}
+                    </Link>
                     <button
                         onClick={handleLogout}
                         className="w-1/2 flex items-center cursor-pointer justify-center font-medium text-md py-3 px-4 bg-gradient-to-r from-[#0074b4] to-[#00b34c] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
