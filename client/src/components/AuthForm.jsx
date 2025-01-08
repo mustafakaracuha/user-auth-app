@@ -6,7 +6,9 @@ import PasswordInput from "./PasswordInput";
 import UserCount from "./UserCount";
 import UserList from "./UserList";
 
-const AuthForm = ({ isLogin, onSubmit, error, success }) => {
+import { CgSpinner } from "react-icons/cg";
+
+const AuthForm = ({ isLogin, onSubmit, error, success, loading }) => {
     const [name, setName] = useState("");
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -76,7 +78,8 @@ const AuthForm = ({ isLogin, onSubmit, error, success }) => {
                             type="submit"
                             className="group relative flex w-full justify-center py-3 px-4 bg-gradient-to-r from-[#0074b4] to-[#00b34c] text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                         >
-                            {isLogin ? "Login" : "Register"}
+                             {!loading && (isLogin ? "Login" : "Register")}
+                            {loading && (<div className="w-full h-full flex items-center justify-center"><CgSpinner size={22} className="animate-spin" /></div>)}
                         </button>
                     </div>
                     {error && <div className="text-red-500 bg-red-50 py-2 rounded-md text-sm text-center">{error}</div>}

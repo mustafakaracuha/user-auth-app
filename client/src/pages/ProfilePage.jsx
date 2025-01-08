@@ -52,7 +52,7 @@ const ProfilePage = () => {
                 </div>
                 <button
                     onClick={handleLogout}
-                    className="w-full mt-6 text-md px-4 py-3 bg-red-100 text-red-600 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                    className="w-full mt-6 font-medium text-sm py-3 px-4 bg-gradient-to-r from-[#0074b4] to-[#00b34c] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                 >
                     Logout
                 </button>
