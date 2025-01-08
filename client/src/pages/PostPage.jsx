@@ -80,7 +80,7 @@ const PostsPage = () => {
                             onChange={(e) => setContent(e.target.value)}
                         ></textarea>
                     </div>
-                    <button type="submit" disabled={!content} className="self-end max-sm:w-full mt-2 disabled:opacity-50 bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600">
+                    <button type="submit" disabled={!content} className="self-end max-sm:w-full mt-2 disabled:opacity-50 bg-gradient-to-r from-[#0074b4] to-[#00b34c] text-white transition-all py-2 px-4 active:scale-105">
                         Send
                     </button>
                 </form>
@@ -101,7 +101,7 @@ const PostsPage = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.4, delay: index * 0.1 }}
                                 key={post._id}
-                                className="mb-4 p-4 border border-gray-300 rounded-md flex items-start space-x-4"
+                                className="mb-4 p-4 border border-gray-300 flex items-start space-x-4"
                             >
                                 <Avatar
                                     size={40}
@@ -115,7 +115,7 @@ const PostsPage = () => {
                                             <p className="text-gray-500 font-semibold text-md">{post.user.name}</p>
                                             <p className="text-gray-300 font-semibold text-sm max-sm:hidden">@{post.user.username}</p>
                                         </div>
-                                        <p className="text-gray-300 text-sm">{moment(post.createdAt).fromNow()}</p>
+                                        <p className="text-gray-400 text-sm">{moment(post.createdAt).fromNow()}</p>
                                     </div>
                                     <p className="text-gray-700 mt-3">{post.content}</p>
                                 </div>
