@@ -8,7 +8,6 @@ import moment from "moment";
 import { motion } from "framer-motion";
 
 import { CgSpinner } from "react-icons/cg";
-import { post } from "../../../server/routes/authRoutes";
 
 const PostsPage = () => {
     const [content, setContent] = useState("");
