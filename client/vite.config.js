@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5001',
+        target: 'https://user-auth-app-server.vercel.app',
         changeOrigin: true,
         secure: false,
       },

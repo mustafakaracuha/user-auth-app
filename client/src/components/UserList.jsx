@@ -5,12 +5,11 @@ import Avatar from "boring-avatars";
 
 const UserList = () => {
     const [users, setUsers] = useState([]);
-    const base_url = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const { data } = await axios.get(`${base_url}/api/auth/users`);
+                const { data } = await axios.get(`/api/auth/users`);
                 setUsers(data);
             } catch (error) {
                 console.error("Error fetching users:", error);

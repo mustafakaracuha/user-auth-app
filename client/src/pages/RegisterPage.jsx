@@ -12,7 +12,7 @@ const RegisterPage = () => {
 
     const handleRegister = async (data) => {
         try {
-            const response = await axios.post(`${base_url}/api/auth/register`, data);
+            const response = await axios.post(`/api/auth/register`, data);
             console.log("Register data:", response.data);
             setSuccess(response.data.message);
             setTimeout(() => {

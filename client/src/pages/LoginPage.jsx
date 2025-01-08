@@ -12,7 +12,7 @@ const LoginPage = () => {
 
     const handleLogin = async (data) => {
         try {
-            const response = await axios.post(`${base_url}/api/auth/login`, data);
+            const response = await axios.post(`/api/auth/login`, data);
             localStorage.setItem("token", response.data.token);
             setSuccess(response.data.message);
             setTimeout(() => {
