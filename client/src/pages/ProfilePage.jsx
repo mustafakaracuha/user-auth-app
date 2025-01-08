@@ -41,27 +41,30 @@ const ProfilePage = () => {
 
     return (
         <div className="relative flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
-                <h2 className="text-3xl font-bold text-center text-gray-900">Profile</h2>
-                <div className="flex items-center space-x-4">
+            <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-lg shadow-gray-200">
+                <div className="relative flex items-center rounded-t-lg bg-gray-200 py-20 justify-center space-x-4">
                     <Avatar
-                        size={65}
+                        size={90}
                         name={user.name}
+                        className="absolute top-[7rem] bg-white rounded-full ring ring-white"
                         variant="beam"
-                        colors={["#5b1d99", "#0074b4", "#00b34c", "#F29F58", "#81BFDA", "#ffd41f", "#fc6e3d", "#FFEB00", "#EFB6C8", "#E82561", "#997C70", "#FF8383"]}
+                        colors={["#5b1d99", "#0074b4", "#00b34c", "#ffd41f", "#fc6e3d"]}
                     />
-                    <div className="text-left">
-                        <h2 className="text-xl font-medium text-gray-900">{user.name}</h2>
-                        <p className="text-md text-gray-400">@{user.username}</p>
-                        <p className="text-sm text-gray-700">{user.email}</p>
-                    </div>
                 </div>
-                <button
-                    onClick={handleLogout}
-                    className="w-full mt-6 font-medium text-sm py-3 px-4 bg-gradient-to-r from-[#0074b4] to-[#00b34c] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                >
-                    Logout
-                </button>
+                <div className="text-center !mt-14">
+                    <h2 className="text-xl font-medium text-gray-900">{user.name}</h2>
+                    <p className="text-md text-gray-400">@{user.username}</p>
+                    <p className="text-sm text-gray-700">{user.email}</p>
+                </div>
+                <div className="flex items-center justify-center">
+                    <button
+                        onClick={handleLogout}
+                        className="w-1/2 flex items-center cursor-pointer justify-center font-medium text-sm py-3 px-4 bg-gradient-to-r from-[#0074b4] to-[#00b34c] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                    >
+                        Logout
+                    </button>
+                </div>
+
                 <hr />
                 <UserList />
             </div>
