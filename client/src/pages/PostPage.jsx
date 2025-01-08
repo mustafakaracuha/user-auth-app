@@ -60,7 +60,7 @@ const PostsPage = () => {
         <div className="flex items-center justify-center min-h-screen max-sm:bg-white bg-gray-100">
             <div
                 className={
-                    posts?.length === 0
+                    posts.length === 0
                         ? "w-full transition-all h-[25rem] max-w-xl p-8 space-y-8 bg-white rounded-lg max-sm:shadow-none shadow-lg"
                         : "w-full transition-all h-[40rem] max-w-xl p-8 space-y-8 bg-white rounded-lg max-sm:shadow-none shadow-lg"
                 }
@@ -80,7 +80,11 @@ const PostsPage = () => {
                             onChange={(e) => setContent(e.target.value)}
                         ></textarea>
                     </div>
-                    <button type="submit" disabled={!content} className="self-end max-sm:w-full mt-2 disabled:opacity-50 bg-gradient-to-r from-[#0074b4] to-[#00b34c] text-white transition-all py-2 px-4 active:scale-105">
+                    <button
+                        type="submit"
+                        disabled={!content}
+                        className="self-end max-sm:w-full mt-2 disabled:opacity-50 bg-gradient-to-r from-[#0074b4] to-[#00b34c] text-white transition-all py-2 px-4 active:scale-105"
+                    >
                         Send
                     </button>
                 </form>
@@ -90,12 +94,11 @@ const PostsPage = () => {
                             <CgSpinner size={30} className="animate-spin text-indigo-600" />
                         </div>
                     )}
-                    {!loading && posts && posts.length === 0 ? (
+                    {!loading && posts.length === 0 ? (
                         <div className="w-full h-full flex items-start justify-center">
                             <p className="text-md text-gray-400">Share your post</p>
                         </div>
                     ) : (
-                        posts &&
                         posts.map((post, index) => (
                             <motion.div
                                 initial={{ opacity: 0, y: -10 }}
