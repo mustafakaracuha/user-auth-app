@@ -107,15 +107,5 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 
 ---
 
-## Acknowledgments
-
-- [React](https://reactjs.org/)
-- [Node.js](https://nodejs.org/)
-- [MongoDB](https://www.mongodb.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Framer Motion](https://www.framer.com/motion/)
-
----
-
-Happy coding! If you have any questions or suggestions, feel free to open an issue. 
+Happy coding! If you have any questions or suggestions, feel free to open an issue. 🎉🤞🏼
 
