@@ -30,6 +30,8 @@ const postSchema = new mongoose.Schema({
     },
 });
 
+postSchema.index({ likes: 1 });
+
 const Post = mongoose.model("Post", postSchema);
 
 module.exports = Post;
