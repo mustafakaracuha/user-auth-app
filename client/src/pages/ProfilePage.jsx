@@ -95,11 +95,11 @@ const ProfilePage = () => {
                         <h3 className="text-lg font-medium text-gray-900">Dashboard</h3>
                         <div className="w-full flex items-center mt-4 gap-4">
                             <div className="w-full flex flex-col items-center bg-gradient-to-r from-[#EBEAFF] to-[#9694FF] text-white p-4 rounded-lg">
-                                <p className="text-md font-medium">My Posts</p>
+                                <p className="text-md font-medium">Total Posts</p>
                                 <p className="text-2xl font-bold">{totalPosts}</p>
                             </div>
                             <div className="w-full flex flex-col items-center bg-gradient-to-r from-[#FF8A8A] to-[#F4DEB3] text-white p-4 rounded-lg">
-                                <p className="text-md font-medium">My Favorites</p>
+                                <p className="text-md font-medium">Total Users</p>
                                 <p className="text-2xl font-bold">{totalUsers}</p>
                             </div>
                         </div>
