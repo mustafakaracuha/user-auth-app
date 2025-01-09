@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import md5 from "md5";
 
+import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { FaSpinner } from "react-icons/fa";
 import Avatar from "boring-avatars";
-import UserList from "../components/UserList";
 
 const ProfilePage = () => {
     const [user, setUser] = useState(null);
+    const [totalPosts, setTotalPosts] = useState("");
+    const [loading, setLoading] = useState(false);
+
     const navigate = useNavigate();
 
     useEffect(() => {
+        fetchTotalCount();
         const token = localStorage.getItem("token");
         if (token) {
             try {
@@ -25,6 +28,18 @@ const ProfilePage = () => {
             navigate("/"); // Token yoksa login sayfasına yönlendir
         }
     }, [navigate]);
+
+    const fetchTotalCount = async () => {
+        setLoading(true);
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/posts/count`);
+            setTotalPosts(response.data.totalPosts);
+            setLoading(false);
+        } catch (error) {
+            console.error("Error fetching post counts:", error);
+            setLoading(false);
+        }
+    };
 
     const handleLogout = () => {
         localStorage.removeItem("token");
@@ -70,6 +85,7 @@ const ProfilePage = () => {
                         Logout
                     </button>
                 </div>
+            {totalPosts > 0 && <p className="text-sm text-end text-gray-400">Total Posts: {totalPosts}</p>}
             </div>
         </div>
     );

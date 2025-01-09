@@ -14,6 +14,7 @@ const PostsPage = () => {
     const [posts, setPosts] = useState([]);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [loadingSubmitPost, setLoadingSubmitPost] = useState(false);
 
     useEffect(() => {
         fetchPosts();
@@ -28,7 +29,6 @@ const PostsPage = () => {
         setLoading(true);
         try {
             const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/posts`);
-            console.log("Posts API Response:", response.data);
             setPosts(response.data);
             setLoading(false);
         } catch (error) {
@@ -38,6 +38,7 @@ const PostsPage = () => {
     };
 
     const handleSubmit = async (e) => {
+        setLoadingSubmitPost(true);
         e.preventDefault();
         try {
             const token = localStorage.getItem("token");
@@ -50,10 +51,12 @@ const PostsPage = () => {
                     },
                 }
             );
+            setLoadingSubmitPost(false);
             fetchPosts();
             setContent("");
         } catch (error) {
             console.error("Error creating post:", error);
+            setLoadingSubmitPost(false);
         }
     };
 
@@ -69,7 +72,7 @@ const PostsPage = () => {
                 <div className="flex items-center justify-between">
                     <h1 className="text-2xl font-bold">Posts</h1>
                     <Link to="/profile" className="text-md font-bold">
-                        {user && <Avatar size={40} name={user.username} variant="beam"  colors={["#5b1d99", "#0074b4", "#00b34c", "#ffd41f", "#fc6e3d"]} />}
+                        {user && <Avatar size={40} name={user.username} variant="beam" colors={["#5b1d99", "#0074b4", "#00b34c", "#ffd41f", "#fc6e3d"]} />}
                     </Link>
                 </div>
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -81,13 +84,16 @@ const PostsPage = () => {
                             onChange={(e) => setContent(e.target.value)}
                         ></textarea>
                     </div>
-                    <button
-                        type="submit"
-                        disabled={!content}
-                        className="self-end max-sm:w-full mt-2 disabled:opacity-50 rounded-lg bg-gradient-to-r from-[#0074b4] to-[#00b34c] text-white transition-all py-2 px-4 active:scale-105"
-                    >
-                        Send
-                    </button>
+                    <div className="flex items-center justify-end">
+                        <button
+                            type="submit"
+                            disabled={!content}
+                            className="self-end flex gap-2 items-center max-sm:w-full mt-2 disabled:opacity-50 rounded-lg bg-gradient-to-r from-[#0074b4] to-[#00b34c] text-white transition-all py-2 px-4 active:scale-105"
+                        >
+                            Send
+                            {loadingSubmitPost && <CgSpinner size={18} className="animate-spin text-white" />}
+                        </button>
+                    </div>
                 </form>
                 <div className="mt-8 h-[20rem] overflow-y-auto">
                     {loading && (
@@ -108,12 +114,7 @@ const PostsPage = () => {
                                 key={post._id}
                                 className="mb-4 p-4 border border-gray-300 flex items-start space-x-4 rounded-lg"
                             >
-                                <Avatar
-                                    size={40}
-                                    name={post.username}
-                                    variant="beam"
-                                    colors={["#5b1d99", "#0074b4", "#00b34c", "#ffd41f", "#fc6e3d"]}
-                                />
+                                <Avatar size={40} name={post.username} variant="beam" colors={["#5b1d99", "#0074b4", "#00b34c", "#ffd41f", "#fc6e3d"]} />
                                 <div className="w-full">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
