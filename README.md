@@ -110,7 +110,7 @@ A personalized user profile page that displays user details,
 
 ## Demo Link
 You can view the application live by visiting the Live Demo.
-👉🏼 https://user-autho-app.vercel.app/
+👉🏼 [https://user-autho-app.vercel.app/](https://user-auth-jwt.netlify.app)
 
 
 Happy coding! If you have any questions or suggestions, feel free to open an issue. 🎉🤞🏼
