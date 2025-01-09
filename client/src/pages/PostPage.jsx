@@ -6,7 +6,7 @@ import {jwtDecode} from "jwt-decode";
 import moment from "moment";
 import { motion } from "framer-motion";
 import { CgSpinner } from "react-icons/cg";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa6";
 
 const PostsPage = () => {
     const [content, setContent] = useState("");
@@ -159,13 +159,13 @@ const PostsPage = () => {
                                         <p className="text-gray-400 text-sm">{moment(post.createdAt).fromNow()}</p>
                                     </div>
                                     <p className="text-gray-700 mt-3">{post.content}</p>
-                                    <div className="flex items-center mt-2">
-                                        {post.likes?.includes(user._id) ? (
-                                            <FaHeart size={20} className="text-red-500 cursor-pointer" onClick={() => handleUnlike(post._id)} />
+                                    <div className="flex items-center mt-3">
+                                    {post.likes?.includes(user?.id) ? (
+                                            <FaHeart size={18} className="text-red-500 cursor-pointer" onClick={() => handleUnlike(post._id)} />
                                         ) : (
-                                            <FaRegHeart size={20} className="text-gray-500 cursor-pointer" onClick={() => handleLike(post._id)} />
+                                            <FaRegHeart size={18} className="text-gray-500 cursor-pointer" onClick={() => handleLike(post._id)} />
                                         )}
-                                        <span className="ml-2 text-gray-500">{post.likes.length}</span>
+                                        <span className="ml-2 text-gray-500">{post.likes.length > 0 && post.likes.length}</span>
                                     </div>
                                 </div>
                             </motion.div>
