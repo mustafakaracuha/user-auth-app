@@ -106,6 +106,11 @@ A personalized user profile page that displays user details,
 |--------------------------------------------------------|---------------------------------------------------|
 | ![Registration Preview](https://github.com/mustafakaracuha/user-auth-app/blob/master/client/src/assets/screenshots/register.png) | ![Login Preview](https://github.com/mustafakaracuha/user-auth-app/blob/master/client/src/assets/screenshots/login.png) |
 
+| **Posts Page**                                  | **Profile Page**                                     |
+|--------------------------------------------------------|---------------------------------------------------|
+| ![Posts Preview](https://github.com/mustafakaracuha/user-auth-app/blob/master/client/src/assets/screenshots/register.png) | ![Login Profile](https://github.com/mustafakaracuha/user-auth-app/blob/master/client/src/assets/screenshots/login.png) |
+
+
 ---
 
 ## Demo Link
