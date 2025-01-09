@@ -85,7 +85,7 @@ const ProfilePage = () => {
                     </Link>
                     <button
                         onClick={handleLogout}
-                        className="w-1/2 flex items-center rounded-lg cursor-pointer justify-center font-medium text-md py-3 px-4 bg-gradient-to-r from-[#0074b4] to-[#00b34c] text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                        className="w-1/2 flex items-center rounded-lg cursor-pointer justify-center font-medium text-md py-3 px-4 bg-gradient-to-r from-[#0074b4] to-[#00b34c] text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                     >
                         Logout
                     </button>
