@@ -27,7 +27,7 @@ const PostsPage = () => {
     const fetchPosts = async () => {
         setLoading(true);
         try {
-            const response = await axios.get("/api/posts");
+            const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/posts`);
             console.log("Posts API Response:", response.data);
             setPosts(response.data);
             setLoading(false);
