@@ -61,6 +61,17 @@ const ProfilePage = () => {
         }
     };
 
+    const updateTimeSpent = async (timeSpent) => {
+        try {
+            await axios.post(`${import.meta.env.VITE_BASE_URL}/api/auth/users-update-time`, {
+                userId: user._id,
+                timeSpent: timeSpent,
+            });
+        } catch (error) {
+            console.error("Error updating time spent:", error);
+        }
+    };
+
     const handleLogout = () => {
         localStorage.removeItem("token");
         navigate("/");
