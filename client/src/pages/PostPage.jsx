@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Avatar from "boring-avatars";
-import jwtDecode from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 import moment from "moment";
 import { motion } from "framer-motion";
 import { CgSpinner } from "react-icons/cg";
