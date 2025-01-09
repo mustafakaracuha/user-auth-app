@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import axios from "axios";
 import Avatar from "boring-avatars";
-import { jwtDecode } from "jwt-decode";
+import jwtDecode from "jwt-decode";
 import moment from "moment";
 import { motion } from "framer-motion";
-
 import { CgSpinner } from "react-icons/cg";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const PostsPage = () => {
     const [content, setContent] = useState("");
@@ -57,6 +56,42 @@ const PostsPage = () => {
         } catch (error) {
             console.error("Error creating post:", error);
             setLoadingSubmitPost(false);
+        }
+    };
+
+    const handleLike = async (postId) => {
+        try {
+            const token = localStorage.getItem("token");
+            await axios.post(
+                `${import.meta.env.VITE_BASE_URL}/api/posts/${postId}/like`,
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            fetchPosts();
+        } catch (error) {
+            console.error("Error liking post:", error);
+        }
+    };
+
+    const handleUnlike = async (postId) => {
+        try {
+            const token = localStorage.getItem("token");
+            await axios.post(
+                `${import.meta.env.VITE_BASE_URL}/api/posts/${postId}/unlike`,
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            fetchPosts();
+        } catch (error) {
+            console.error("Error unliking post:", error);
         }
     };
 
@@ -124,6 +159,14 @@ const PostsPage = () => {
                                         <p className="text-gray-400 text-sm">{moment(post.createdAt).fromNow()}</p>
                                     </div>
                                     <p className="text-gray-700 mt-3">{post.content}</p>
+                                    <div className="flex items-center mt-2">
+                                        {post.likes.includes(user._id) ? (
+                                            <FaHeart size={20} className="text-red-500 cursor-pointer" onClick={() => handleUnlike(post._id)} />
+                                        ) : (
+                                            <FaRegHeart size={20} className="text-gray-500 cursor-pointer" onClick={() => handleLike(post._id)} />
+                                        )}
+                                        <span className="ml-2 text-gray-500">{post.likes.length}</span>
+                                    </div>
                                 </div>
                             </motion.div>
                         ))
