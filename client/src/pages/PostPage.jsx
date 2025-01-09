@@ -69,7 +69,7 @@ const PostsPage = () => {
                 <div className="flex items-center justify-between">
                     <h1 className="text-2xl font-bold">Posts</h1>
                     <Link to="/profile" className="text-md font-bold">
-                        {user && <Avatar size={40} name={user.username} variant="beam" colors={["#ff5252"]} />}
+                        {user && <Avatar size={40} name={user.username} variant="beam"  colors={["#5b1d99", "#0074b4", "#00b34c", "#ffd41f", "#fc6e3d"]} />}
                     </Link>
                 </div>
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -112,7 +112,7 @@ const PostsPage = () => {
                                     size={40}
                                     name={post.username}
                                     variant="beam"
-                                    colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90", "#E0E4CC", "#69D2E7", "#FA6900", "#F38630", "#E94C6F"]}
+                                    colors={["#5b1d99", "#0074b4", "#00b34c", "#ffd41f", "#fc6e3d"]}
                                 />
                                 <div className="w-full">
                                     <div className="flex items-center justify-between">

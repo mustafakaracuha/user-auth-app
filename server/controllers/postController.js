@@ -25,4 +25,16 @@ const getPosts = async (req, res) => {
     }
 };
 
-module.exports = { createPost, getPosts };
+
+const getTotalPosts = async (req, res) => {
+    try {
+        const totalPosts = await Post.countDocuments();
+        res.status(200).json({ totalPosts });
+    } catch (error) {
+        res.status(500).json({ message: "Toplam post sayısı getirilemedi", error });
+    }
+};
+
+
+
+module.exports = { createPost, getPosts, getTotalPosts };

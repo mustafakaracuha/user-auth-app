@@ -45,7 +45,7 @@ const ProfilePage = () => {
                 <div className="relative flex items-center rounded-t-lg bg-gradient-to-r from-[#FFF1DB]  to-[#D4BDAC] py-20 justify-center space-x-4">
                     <Avatar
                         size={90}
-                        name={user.name}
+                        name={user.email}
                         className="absolute top-[7rem] bg-white rounded-full ring ring-white"
                         variant="beam"
                         colors={["#5b1d99", "#0074b4", "#00b34c", "#ffd41f", "#fc6e3d"]}
@@ -56,7 +56,7 @@ const ProfilePage = () => {
                     <p className="text-md text-gray-400">@{user.username}</p>
                     <p className="text-md text-gray-700">{user.email}</p>
                 </div>
-                <div className="flex items-center justify-center gap-4">
+                <div className="flex items-center justify-  center gap-4">
                     <Link
                         to="/posts"
                         className="w-1/2 flex items-center rounded-lg cursor-pointer justify-center font-medium text-md py-3 px-4 bg-gradient-to-r from-[#ffd41f] to-[#fc6e3d] text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fc6e3d]"
