@@ -7,10 +7,12 @@ import Avatar from "boring-avatars";
 
 const ProfilePage = () => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(false);
+
     const [totalPosts, setTotalPosts] = useState("");
     const [totalUsers, setTotalUsers] = useState("");
     const [totalTimeSpent, setTotalTimeSpent] = useState("");
-    const [loading, setLoading] = useState(false);
+    const [sessionStartTime, setSessionStartTime] = useState(null);
 
     const navigate = useNavigate();
 
@@ -21,6 +23,7 @@ const ProfilePage = () => {
             try {
                 const decodedToken = jwtDecode(token);
                 setUser(decodedToken);
+                setSessionStartTime(Date.now());
             } catch (error) {
                 console.error("Invalid token:", error);
                 navigate("/"); // Token geçersizse login sayfasına yönlendir
@@ -28,7 +31,15 @@ const ProfilePage = () => {
         } else {
             navigate("/"); // Token yoksa login sayfasına yönlendir
         }
-    }, [navigate]);
+
+        return () => {
+            if (sessionStartTime) {
+                const sessionEndTime = Date.now();
+                const timeSpent = Math.floor((sessionEndTime - sessionStartTime) / 1000); // Saniye cinsinden
+                updateTimeSpent(timeSpent);
+            }
+        };
+    }, [navigate, sessionStartTime]);
 
     const fetchTotalCounts = async () => {
         setLoading(true);

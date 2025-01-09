@@ -94,3 +94,14 @@ exports.getTotalTimeSpentUser = async (req, res) => {
         res.status(500).json({ message: "Toplam süre getirilemedi", error });
     }
 };
+
+exports.updateUserTimeSpent = async (req, res) => {
+    const { userId, timeSpent } = req.body;
+
+    try {
+        await User.findByIdAndUpdate(userId, { $inc: { timeSpent: timeSpent } });
+        res.status(200).json({ message: "Time spent updated successfully" });
+    } catch (error) {
+        res.status(500).json({ message: "Failed to update time spent", error });
+    }
+};
