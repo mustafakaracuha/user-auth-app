@@ -75,7 +75,7 @@ const PostsPage = () => {
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                     <div className="flex items-center gap-4">
                         <textarea
-                            className="w-full h-24 p-2 border border-gray-300 rounded outline-none focus:border-indigo-500"
+                            className="w-full h-24 p-2 border border-gray-300 rounded-lg outline-none focus:border-indigo-500"
                             placeholder="What do you think?"
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
@@ -84,7 +84,7 @@ const PostsPage = () => {
                     <button
                         type="submit"
                         disabled={!content}
-                        className="self-end max-sm:w-full mt-2 disabled:opacity-50 bg-gradient-to-r from-[#0074b4] to-[#00b34c] text-white transition-all py-2 px-4 active:scale-105"
+                        className="self-end max-sm:w-full mt-2 disabled:opacity-50 rounded-lg bg-gradient-to-r from-[#0074b4] to-[#00b34c] text-white transition-all py-2 px-4 active:scale-105"
                     >
                         Send
                     </button>
@@ -106,7 +106,7 @@ const PostsPage = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.4, delay: index * 0.1 }}
                                 key={post._id}
-                                className="mb-4 p-4 border border-gray-300 flex items-start space-x-4"
+                                className="mb-4 p-4 border border-gray-300 flex items-start space-x-4 rounded-lg"
                             >
                                 <Avatar
                                     size={40}
