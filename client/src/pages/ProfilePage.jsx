@@ -7,12 +7,10 @@ import Avatar from "boring-avatars";
 
 const ProfilePage = () => {
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(false);
-
     const [totalPosts, setTotalPosts] = useState("");
     const [totalUsers, setTotalUsers] = useState("");
     const [totalTimeSpent, setTotalTimeSpent] = useState("");
-    const [sessionStartTime, setSessionStartTime] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -23,7 +21,6 @@ const ProfilePage = () => {
             try {
                 const decodedToken = jwtDecode(token);
                 setUser(decodedToken);
-                setSessionStartTime(Date.now());
             } catch (error) {
                 console.error("Invalid token:", error);
                 navigate("/"); // Token geçersizse login sayfasına yönlendir
@@ -31,15 +28,7 @@ const ProfilePage = () => {
         } else {
             navigate("/"); // Token yoksa login sayfasına yönlendir
         }
-
-        return () => {
-            if (sessionStartTime) {
-                const sessionEndTime = Date.now();
-                const timeSpent = Math.floor((sessionEndTime - sessionStartTime) / 1000); // Saniye cinsinden
-                updateTimeSpent(timeSpent);
-            }
-        };
-    }, [navigate, sessionStartTime]);
+    }, [navigate]);
 
     const fetchTotalCounts = async () => {
         setLoading(true);
@@ -50,25 +39,10 @@ const ProfilePage = () => {
             const userResponse = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/auth/user-count`);
             setTotalUsers(userResponse.data.userCount);
 
-            const timeResponse = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/auth/users-total-time`);
-            setTotalTimeSpent(timeResponse.data.totalTimeSpent);
-
-
             setLoading(false);
         } catch (error) {
             console.error("Error fetching counts:", error);
             setLoading(false);
-        }
-    };
-
-    const updateTimeSpent = async (timeSpent) => {
-        try {
-            await axios.post(`${import.meta.env.VITE_BASE_URL}/api/auth/users-update-time`, {
-                userId: user._id,
-                timeSpent: timeSpent,
-            });
-        } catch (error) {
-            console.error("Error updating time spent:", error);
         }
     };
 
@@ -119,16 +93,12 @@ const ProfilePage = () => {
                 {totalPosts && totalUsers && (
                     <div className="mt-8">
                         <h3 className="text-lg font-medium text-gray-900">Dashboard</h3>
-                        <div className="flex items-center justify-between mt-4 gap-4">
-                            <div className="flex flex-col items-center bg-gradient-to-r from-[#EBEAFF] to-[#9694FF] text-white p-4 rounded-lg">
+                        <div className="w-full flex items-center mt-4 gap-4">
+                            <div className="w-full flex flex-col items-center bg-gradient-to-r from-[#EBEAFF] to-[#9694FF] text-white p-4 rounded-lg">
                                 <p className="text-md font-medium">Total Posts</p>
                                 <p className="text-2xl font-bold">{totalPosts}</p>
                             </div>
-                            <div className="flex flex-col items-center bg-gradient-to-r from-[#77CDFF] to-[#0D92F4] text-white p-4 rounded-lg">
-                                <p className="text-md font-medium">Time Spend</p>
-                                <p className="text-2xl font-bold">{totalTimeSpent}</p>
-                            </div>
-                            <div className="flex flex-col items-center bg-gradient-to-r from-[#FF8A8A] to-[#F4DEB3] text-white p-4 rounded-lg">
+                            <div className="w-full flex flex-col items-center bg-gradient-to-r from-[#FF8A8A] to-[#F4DEB3] text-white p-4 rounded-lg">
                                 <p className="text-md font-medium">Total Users</p>
                                 <p className="text-2xl font-bold">{totalUsers}</p>
                             </div>

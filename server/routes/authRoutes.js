@@ -16,11 +16,5 @@ router.get("/user-count", getUserCount);
 // Tüm kullanıcıları çeken rota
 router.get("/users", getAllUsers);
 
-// Kullanıcı süre bilgilerini dönen rota
-router.get("/users-total-time", getTotalTimeSpentUser);
-
-// Kullanıcı süre bilgilerini güncelleyen rota
-router.post("/users-update-time", updateUserTimeSpent);
-
 
 module.exports = router;
