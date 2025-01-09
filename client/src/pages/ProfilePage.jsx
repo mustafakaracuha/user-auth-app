@@ -61,7 +61,7 @@ const ProfilePage = () => {
 
     return (
         <div className="relative flex items-center justify-center min-h-screen max-sm:bg-white bg-gray-100">
-            <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg max-sm:shadow-none shadow-lg shadow-gray-200">
+            <div className="w-full max-w-md max-sm:p-4 p-8 space-y-8 bg-white rounded-lg max-sm:shadow-none shadow-lg shadow-gray-200">
                 <div className="relative flex items-center rounded-t-lg bg-gradient-to-r from-[#FFF1DB]  to-[#D4BDAC] py-20 justify-center space-x-4">
                     <Avatar
                         size={90}
