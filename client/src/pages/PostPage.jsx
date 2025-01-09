@@ -160,7 +160,7 @@ const PostsPage = () => {
                                     </div>
                                     <p className="text-gray-700 mt-3">{post.content}</p>
                                     <div className="flex items-center mt-2">
-                                        {post.likes.includes(user._id) ? (
+                                        {post.likes?.includes(user._id) ? (
                                             <FaHeart size={20} className="text-red-500 cursor-pointer" onClick={() => handleUnlike(post._id)} />
                                         ) : (
                                             <FaRegHeart size={20} className="text-gray-500 cursor-pointer" onClick={() => handleLike(post._id)} />
