@@ -103,8 +103,8 @@ const ProfilePage = () => {
                                 <p className="text-2xl font-bold">{totalPosts}</p>
                             </div>
                             <div className="flex flex-col items-center bg-gradient-to-r from-[#77CDFF] to-[#0D92F4] text-white p-4 rounded-lg">
-                                <p className="text-md font-medium">Total Users</p>
-                                <p className="text-2xl font-bold">{totalUsers}</p>
+                                <p className="text-md font-medium">Time Spend</p>
+                                <p className="text-2xl font-bold">{totalTimeSpent}</p>
                             </div>
                             <div className="flex flex-col items-center bg-gradient-to-r from-[#FF8A8A] to-[#F4DEB3] text-white p-4 rounded-lg">
                                 <p className="text-md font-medium">Total Users</p>
