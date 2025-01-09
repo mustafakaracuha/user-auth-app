@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { FaSpinner } from "react-icons/fa";
@@ -9,12 +8,14 @@ import Avatar from "boring-avatars";
 const ProfilePage = () => {
     const [user, setUser] = useState(null);
     const [totalPosts, setTotalPosts] = useState("");
+    const [totalUsers, setTotalUsers] = useState("");
+    const [totalTimeSpent, setTotalTimeSpent] = useState("");
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetchTotalCount();
+        fetchTotalCounts();
         const token = localStorage.getItem("token");
         if (token) {
             try {
@@ -29,14 +30,22 @@ const ProfilePage = () => {
         }
     }, [navigate]);
 
-    const fetchTotalCount = async () => {
+    const fetchTotalCounts = async () => {
         setLoading(true);
         try {
-            const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/posts/count`);
-            setTotalPosts(response.data.totalPosts);
+            const postResponse = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/posts/count`);
+            setTotalPosts(postResponse.data.totalPosts);
+
+            const userResponse = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/auth/user-count`);
+            setTotalUsers(userResponse.data.userCount);
+
+            const timeResponse = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/auth/users-total-time`);
+            setTotalTimeSpent(timeResponse.data.totalTimeSpent);
+
+
             setLoading(false);
         } catch (error) {
-            console.error("Error fetching post counts:", error);
+            console.error("Error fetching counts:", error);
             setLoading(false);
         }
     };
@@ -60,7 +69,7 @@ const ProfilePage = () => {
                 <div className="relative flex items-center rounded-t-lg bg-gradient-to-r from-[#FFF1DB]  to-[#D4BDAC] py-20 justify-center space-x-4">
                     <Avatar
                         size={90}
-                        name={user.email}
+                        name={user.username}
                         className="absolute top-[7rem] bg-white rounded-full ring ring-white"
                         variant="beam"
                         colors={["#5b1d99", "#0074b4", "#00b34c", "#ffd41f", "#fc6e3d"]}
@@ -71,7 +80,7 @@ const ProfilePage = () => {
                     <p className="text-md text-gray-400">@{user.username}</p>
                     <p className="text-md text-gray-700">{user.email}</p>
                 </div>
-                <div className="flex items-center justify-  center gap-4">
+                <div className="flex items-center justify-center gap-4">
                     <Link
                         to="/posts"
                         className="w-1/2 flex items-center rounded-lg cursor-pointer justify-center font-medium text-md py-3 px-4 bg-gradient-to-r from-[#ffd41f] to-[#fc6e3d] text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fc6e3d]"
@@ -85,7 +94,25 @@ const ProfilePage = () => {
                         Logout
                     </button>
                 </div>
-            {totalPosts > 0 && <p className="text-sm text-end text-gray-400">Total Posts: {totalPosts}</p>}
+                {totalPosts && totalUsers && (
+                    <div className="mt-8">
+                        <h3 className="text-lg font-medium text-gray-900">Dashboard</h3>
+                        <div className="flex items-center justify-between mt-4 gap-4">
+                            <div className="flex flex-col items-center bg-gradient-to-r from-[#EBEAFF] to-[#9694FF] text-white p-4 rounded-lg">
+                                <p className="text-md font-medium">Total Posts</p>
+                                <p className="text-2xl font-bold">{totalPosts}</p>
+                            </div>
+                            <div className="flex flex-col items-center bg-gradient-to-r from-[#77CDFF] to-[#0D92F4] text-white p-4 rounded-lg">
+                                <p className="text-md font-medium">Total Users</p>
+                                <p className="text-2xl font-bold">{totalUsers}</p>
+                            </div>
+                            <div className="flex flex-col items-center bg-gradient-to-r from-[#FF8A8A] to-[#F4DEB3] text-white p-4 rounded-lg">
+                                <p className="text-md font-medium">Total Users</p>
+                                <p className="text-2xl font-bold">{totalUsers}</p>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

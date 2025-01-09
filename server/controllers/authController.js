@@ -81,3 +81,16 @@ exports.getAllUsers = async (req, res) => {
         res.status(500).json({ message: "Server error", error });
     }
 };
+
+// Kullanıcının toplam süresini getiren fonksiyon
+exports.getTotalTimeSpentUser = async (req, res) => {
+    try {
+        // Örnek olarak, tüm kullanıcıların toplam sürelerini hesaplayın
+        const totalTimeSpent = await User.aggregate([
+            { $group: { _id: null, totalTime: { $sum: "$timeSpent" } } }
+        ]);
+        res.status(200).json({ totalTimeSpent: totalTimeSpent[0].totalTime });
+    } catch (error) {
+        res.status(500).json({ message: "Toplam süre getirilemedi", error });
+    }
+};
